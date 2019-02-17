@@ -6,10 +6,10 @@ import keras
 import numpy as np
 class tic_tac_toe:
     def __init__(self):
-	self.board = list(range(1,10))
-	self.gameState = 0
-	#X is 1 O is 2
-	self.playerState = 1
+        self.board = list(range(1,10))
+        self.gameState = 0
+        #X is 1 O is 2
+        self.playerState = 1
     
 #turn state
     def draw(self):
@@ -33,7 +33,7 @@ class tic_tac_toe:
         return self.board
 	
     def setBoard(self, board):
-	self.board = board
+        self.board = board
         WIN_COMBINATIONS = [(0, 1, 2),(3, 4, 5),(6, 7, 8),(0, 3, 6),(1, 4, 7),(2, 5, 8),(0, 4, 8),(2, 4, 6),]
         for a,b,c in WIN_COMBINATIONS:
             if self.board[a] == self.board[b] == self.board[c]:
@@ -47,17 +47,17 @@ class tic_tac_toe:
                 break
 	
     def getPlayerState(self):
-	return self.playerState
+        return self.playerState
 	
     def setPlayerState(self, state):
-	self.playerState = state
+        self.playerState = state
 	
     def getGameState(self):
-	return self.gameState
+        return self.gameState
 def posMovs(board, playerState):
     moves = []
     for i in range(9):
-	if board[i] != 'X' and board[i] != "O":
+        if board[i] != 'X' and board[i] != "O":
             temp = list(board)
             if playerState == 1:
                 temp[i] = 'X'
@@ -120,26 +120,32 @@ def train(network):
     scoreList = []
     while(True):
         if game.getGameState() == 0:
-	    if game.getPlayerState() == 1:
-	        board,score = selectMove(game.getBoard(), game.getPlayerState())
+            if game.getPlayerState() == 1:
+                board,score = selectMove(game.getBoard(), game.getPlayerState())
                 moveList.append(convert(board))
-		scoreList.append(score)
-		game.setBoard(board)
-	        game.setPlayerState(2)
-	    elif game.getPlayerState() == 2:
-		game.setBoard(random.choice(posMovs(game.getBoard(), game.getPlayerState())))
+                scoreList.append(score)
+                game.setBoard(board)
+                game.setPlayerState(2)
+            elif game.getPlayerState() == 2:
+                game.setBoard(random.choice(posMovs(game.getBoard(), game.getPlayerState())))
                 game.setPlayerState(1)
-	elif game.getGameState() == 1:
-	    scoreList = shift(scoreList, 1)
+        elif game.getGameState() == 1:
+            scoreList = shift(scoreList, 1)
             break
-	elif game.getGameState() == 2:
-	    scoreList = shift(scoreList, -1)
+        elif game.getGameState() == 2:
+            scoreList = shift(scoreList, -1)
             break
         elif game.getGameState() == 3:
-	    scoreList = shift(scoreList, 0)
+            scoreList = shift(scoreList, 0)
             break
     network.fit(np.asarray(moveList), np.asarray(scoreList), epochs = 1, verbose=0)
     return network, game.getGameState()
+    #train ai against opponent and shift scores based on end result)
+    #return updated model and result
+    #need to convert board to proper values before sent as x
+    #x = board  states y = scores
+    #network.fit(x,y, epochs = 1, batch_size=1)
+    #return network,result as 0 for loss/draw 1 for win
 winCount = 0
 lossCount = 0
 drawCount = 0
