@@ -1,7 +1,7 @@
 # What does it do?
 This program utilizes a neural network to train a computer to be able to play a human in tic tac toe.
 # How does it work?
-The neural network utilizes the keras framework and tensorflow as a backend as a basis for the network itself. The network consists of an input layer with 18 input nodes and a single node output layer and uses a linear model rather than utilizing an activation function.
+To create the neural network the keras framework is utilized with tensorflow as a backend. The network consists of an input layer with 18 input nodes and a single node output layer and uses a linear model rather than utilizing an activation function.
 
 The network was first trained in the train.py program through reinforced learning by assessing how it played against an opponent and having it adjust the weight values accordingly. Once thorougly trained the model was then put into use against a human player in play.py. TTTmodel.h5 is a save file of the trained neural network to allow it to be ported from train.py to play.py.
 # Results
