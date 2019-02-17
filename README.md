@@ -1,3 +1,5 @@
+# Why we did it
+With AI and specifically machine learning being a fast growing technology we wanted to learn more about it and get first hand experience in working with a program that utilizes these concepts.
 # What does it do?
 This program utilizes a neural network to train a computer to be able to play a human in tic tac toe.
 # How does it work?
