@@ -6,14 +6,14 @@ from keras.models import load_model
 import numpy as np
 class tic_tac_toe:
     def __init__(self):
-	self.board = list(range(1,10))
-	self.gameState = 0
-	#X is 1 O is 2
-	self.playerState = 1
+        self.board = list(range(1,10))
+        self.gameState = 0
+        #X is 1 O is 2
+        self.playerState = 1
     
 #turn state
     def draw(self):
-        print(str(self.board[0]), str(self.board[1]), str(self.board[2]))
+        print(str(self.board[0]), str(self.board[1]),str(self.board[2]))
         print(str(self.board[3]), str(self.board[4]), str(self.board[5]))
         print(str(self.board[6]), str(self.board[7]), str(self.board[8]))
         print()
@@ -33,7 +33,7 @@ class tic_tac_toe:
         return self.board
 	
     def setBoard(self, board):
-	self.board = board
+        self.board = board
         WIN_COMBINATIONS = [(0, 1, 2),(3, 4, 5),(6, 7, 8),(0, 3, 6),(1, 4, 7),(2, 5, 8),(0, 4, 8),(2, 4, 6),]
         for a,b,c in WIN_COMBINATIONS:
             if self.board[a] == self.board[b] == self.board[c]:
@@ -47,17 +47,17 @@ class tic_tac_toe:
                 break
 	
     def getPlayerState(self):
-	return self.playerState
+        return self.playerState
 	
     def setPlayerState(self, state):
-	self.playerState = state
+        self.playerState = state
 	
     def getGameState(self):
-	return self.gameState
+        return self.gameState
 def posMovs(board, playerState):
     moves = []
     for i in range(9):
-	if board[i] != 'X' and board[i] != "O":
+        if board[i] != 'X' and board[i] != "O":
             temp = list(board)
             if playerState == 1:
                 temp[i] = 'X'
@@ -106,20 +106,20 @@ def play(network):
     game = tic_tac_toe()
     while(True):
         if game.getGameState() == 0:
-	    if game.getPlayerState() == 1:
-	        board = selectMove(game.getBoard(), game.getPlayerState())
-		game.setBoard(board)
+            if game.getPlayerState() == 1:
+                board = selectMove(game.getBoard(), game.getPlayerState())
+                game.setBoard(board)
                 game.draw()
-	        game.setPlayerState(2)
-	    elif game.getPlayerState() == 2:
+                game.setPlayerState(2)
+            elif game.getPlayerState() == 2:
                 selectMove(game.getBoard(), game.getPlayerState())
                 game.setBoard(board)
                 game.draw()
                 game.setPlayerState(1)
-	elif game.getGameState() == 1:
-	    print('You lost!')
+        elif game.getGameState() == 1:
+            print('You lost!')
             break
-	elif game.getGameState() == 2:
+        elif game.getGameState() == 2:
             print('You Win!')
             break
         elif game.getGameState() == 3:
