@@ -90,12 +90,6 @@ network.add(Dense(
     input_shape=(18,),
     kernel_initializer='random_uniform'
     ))
-#adds a hidden layer
-'''network.add(Dense(
-    9,
-    kernel_initializer='random_uniform',
-    activation='relu'
-    ))'''
 #output layer that generates a score based on the board placement
 network.add(Dense(
     1,
@@ -146,12 +140,6 @@ def train(network):
             break
     network.fit(np.asarray(moveList), np.asarray(scoreList), epochs = 1, verbose=0)
     return network, game.getGameState()
-    #train ai against opponent and shift scores based on end result)
-    #return updated model and result
-    #need to convert board to proper values before sent as x
-    #x = board  states y = scores
-    #network.fit(x,y, epochs = 1, batch_size=1)
-    #return network,result as 0 for loss/draw 1 for win
 winCount = 0
 lossCount = 0
 drawCount = 0
