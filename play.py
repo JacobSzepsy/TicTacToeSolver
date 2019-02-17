@@ -13,9 +13,9 @@ class tic_tac_toe:
     
 #turn state
     def draw(self):
-        print(self.board[0], self.board[1], self.board[2])
-        print(self.board[3], self.board[4], self.board[5])
-        print(self.board[6], self.board[7], self.board[8])
+        print(str(self.board[0]), str(self.board[1]), str(self.board[2]))
+        print(str(self.board[3]), str(self.board[4]), str(self.board[5]))
+        print(str(self.board[6]), str(self.board[7]), str(self.board[8]))
         print()
 
     def is_game_over(self):
