@@ -3,11 +3,11 @@ With AI and specifically machine learning being a fast growing technology we wan
 # What does it do?
 This program utilizes a neural network to train a computer to be able to play a human in tic tac toe.
 # How does it work?
-To create the neural network the keras framework is utilized with tensorflow as a backend. The network consists of an input layer with 18 input nodes and a single node output layer and uses a linear model rather than utilizing an activation function. For the loss function the mean squared error loss function is used.
+To create the neural network the keras framework is utilized with tensorflow as a backend. The network consists of an input layer with 18 input nodes and a single node output layer and uses a linear model rather than utilizing an activation function. For the loss function the mean squared error loss function is used. To begin with the weight values for each input is generated randomly which is the equivalent of the AI making moves randomly but as it plays each game it starts to fine tune these weight values to improve it's accuracy.
 
-The network was first trained in the train.py program through reinforced learning by assessing how it played against an opponent and having it adjust the weight values accordingly. Once thorougly trained the model was then put into use against a human player in play.py. TTTmodel.h5 is a save file of the trained neural network to allow it to be ported from train.py to play.py.
+The network was first trained in the train.py program through reinforced learning by assessing how it played against an opponent and having it adjust the weight values accordingly. Once thoroughly trained the model was then put into use against a human player in play.py. TTTmodel.h5 is a save file of the trained neural network to allow it to be ported from train.py to play.py.
 # Results
-Below are images of the win rates gathered during two different times training the neural network using different amounts of data.
+Below are images of the win rates gathered during two different times training the neural network using different amounts of data. The AI starts out with random weights and then ends with more precision.
 **Improvement in win-rate when trained on 10,000 games (~30% increase)**
 ![10k game training](https://i.gyazo.com/119678b3fdfa606144988e8cc6bee205.png)
 **Improvement in win-rate when trained on 20,000 games (~18% increase)**
